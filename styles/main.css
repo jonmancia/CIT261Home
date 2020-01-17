@@ -12,7 +12,7 @@ body {
 
 .headerContainer {
   width: 100vw;
-  height: 95vh;
+  height: 75vh;
   background-image: linear-gradient(
       to right bottom,
       rgba(255, 255, 255, 0.1),
@@ -45,7 +45,7 @@ body {
   width: 75vh;
   position: absolute;
   left: 50%;
-  top: 60%;
+  top: 50%;
   transform: translate(-50%, -50%);
 }
 

@@ -91,6 +91,7 @@ a:hover {
   width: 100vw;
   background-color: rgb(102, 90, 196);
   border-top: 4px solid rgba(152, 220, 207, 0.95);
+  color: #eaeaea;
 }
 
 .assignmentsContainer {

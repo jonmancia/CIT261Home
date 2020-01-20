@@ -89,11 +89,7 @@ a:hover {
 #mainContainer {
   padding-top: 40px;
   width: 100vw;
-  background-image: linear-gradient(
-    to right bottom,
-    rgba(152, 210, 207, 1),
-    rgba(152, 210, 207, 0.1)
-  );
+  background-color: rgb(102, 90, 196);
   border-top: 4px solid rgba(152, 220, 207, 0.95);
 }
 

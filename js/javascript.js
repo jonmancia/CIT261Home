@@ -97,7 +97,7 @@ function gifRequest() {
   // API key
   request.open(
     'GET',
-    `http://api.giphy.com/v1/gifs/search?q=${EMOTIONS[randomEmotion]}&api_key=7OvpnuSOvDeKHnxXLJ9AJq5ZpTsuJRap&limit=20`
+    `https://api.giphy.com/v1/gifs/search?q=${EMOTIONS[randomEmotion]}&api_key=7OvpnuSOvDeKHnxXLJ9AJq5ZpTsuJRap&limit=20`
   );
 
   // Sends request to Giphy api

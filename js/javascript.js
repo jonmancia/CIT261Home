@@ -25,8 +25,6 @@ function initializer() {
   }
 }
 
-// On Page Load, run initializer
-document.onload = initializer();
 /**
  * Name: RandomNumGenerator
  * Description: Returns random integer based on upToNum(non-inclusive) argument
@@ -108,3 +106,6 @@ function gifRequest() {
 
 // Change Button changes the random user mood
 document.getElementById('changeMoodBtn').addEventListener('click', gifRequest);
+
+// On Page Load, run initializer
+document.onload = initializer();

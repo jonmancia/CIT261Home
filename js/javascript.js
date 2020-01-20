@@ -8,24 +8,6 @@
 const localStorage = window.localStorage;
 
 /**
- * Name: initializer
- * Description: Checks if a user mood and gif url are already found in local storage
- *              if they are, they wil be appended to DOM element properties. Otherwise,
- *              HttpRequest is made via gifRequest function
- */
-function initializer() {
-  if (localStorage.getItem('mood') && localStorage.getItem('url')) {
-    // Use DOM API to access innerText property of userMood header element
-    document.getElementById('userMood').innerText = localStorage.getItem(
-      'mood'
-    );
-    document.getElementById('mainImage').src = localStorage.getItem('url');
-  } else {
-    gifRequest();
-  }
-}
-
-/**
  * Name: RandomNumGenerator
  * Description: Returns random integer based on upToNum(non-inclusive) argument
  *              passed to getNum method
@@ -44,6 +26,24 @@ const RandomNumGenerator = function() {
  * Returns: Object which includes getNum function
  */
 const Random = new RandomNumGenerator();
+
+/**
+ * Name: initializer
+ * Description: Checks if a user mood and gif url are already found in local storage
+ *              if they are, they wil be appended to DOM element properties. Otherwise,
+ *              HttpRequest is made via gifRequest function
+ */
+function initializer() {
+  if (localStorage.getItem('mood') && localStorage.getItem('url')) {
+    // Use DOM API to access innerText property of userMood header element
+    document.getElementById('userMood').innerText = localStorage.getItem(
+      'mood'
+    );
+    document.getElementById('mainImage').src = localStorage.getItem('url');
+  } else {
+    gifRequest();
+  }
+}
 
 /**
  * Name: request

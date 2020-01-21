@@ -52,22 +52,6 @@ function initializer() {
  * Returns: Single image url and sets image to DOM
  */
 function gifRequest() {
-  const request = new XMLHttpRequest();
-  request.onreadystatechange = function() {
-    // if the request was successful
-    if (this.readyState == 4 && this.status == 200) {
-      // Parse data JSON object to Javascript Object returned from api
-      let data = JSON.parse(request.response);
-      // Get a random number between 0 to 19, the api returns 20 images
-      let num = Random.getNum(20);
-      // Get random image url
-      let url = data.data[num].images.original.url;
-      localStorage.setItem('url', url);
-      // Append url from random gif to image src property
-      document.getElementById('mainImage').src = url;
-    }
-  };
-
   // Emotions array
   const EMOTIONS = [
     'Happy',
@@ -87,11 +71,27 @@ function gifRequest() {
   // Gets random emotion from EMOTIONS array
   let randomEmotion = Random.getNum(EMOTIONS.length);
 
-  // localStorage setter
-  localStorage.setItem('mood', EMOTIONS[randomEmotion]);
+  const request = new XMLHttpRequest();
 
-  // Use DOM API to access innerText property of userMood header element
-  document.getElementById('userMood').innerText = EMOTIONS[randomEmotion];
+  request.onreadystatechange = function() {
+    // if the request was successful
+    if (this.readyState == 4 && this.status == 200) {
+      // Parse data JSON object to Javascript Object returned from api
+      let data = JSON.parse(request.response);
+      // Get a random number between 0 to 19, the api returns 20 images
+      let num = Random.getNum(20);
+      // Get random image url
+      let url = data.data[num].images.original.url;
+      // Append url from random gif to image src property
+      document.getElementById('mainImage').src = url;
+      // localStorage url setter
+      localStorage.setItem('url', url);
+      // localStorage user mood setter
+      localStorage.setItem('mood', EMOTIONS[randomEmotion]);
+      // Use DOM API to access innerText property of userMood header element
+      document.getElementById('userMood').innerText = EMOTIONS[randomEmotion];
+    }
+  };
 
   // Opens the AJAX request object with API address and randomly selected emotion along with
   // API key

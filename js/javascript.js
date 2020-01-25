@@ -4,13 +4,16 @@
 // JSON
 // Javascript
 
-// Stores mood and gif url to localstorage
-const localStorage = window.localStorage;
+// Local Storage getter
+function getLocalStorageObj() {
+  const localStorage = window.localStorage;
+  return localStorage;
+}
 
 /**
  * Name: RandomNumGenerator
  * Description: Returns random integer based on upToNum(non-inclusive) argument
- *              passed to getNum method
+ *              passed to getNum method. ES5 Way
  * Type: Function Object
  * Returns: Integer
  */
@@ -34,6 +37,7 @@ const Random = new RandomNumGenerator();
  *              HttpRequest is made via gifRequest function
  */
 function initializer() {
+  const localStorage = getLocalStorageObj();
   if (localStorage.getItem('mood') && localStorage.getItem('url')) {
     // Use DOM API to access innerText property of userMood header element
     document.getElementById('userMood').innerText = localStorage.getItem(

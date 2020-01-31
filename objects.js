@@ -83,7 +83,7 @@ class Request {
     };
     request.open(
       'GET',
-      'http://api.carmd.com/v3.0/recall?year=2012&make=toyota&model=camry',
+      'https://api.carmd.com/v3.0/recall?year=2012&make=toyota&model=camry',
       true
     );
     request.setRequestHeader('content-type', 'application/json');

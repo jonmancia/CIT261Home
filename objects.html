@@ -1,23 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="objects.js" defer></script>
-    <title>Javascript Objects</title>
-  </head>
-  <body>
-    <form action="#">
-      <label for="vinEl">Vin #:</label>
-      <input type="text" name="vinEl" id="vinEl" />
-      <h3><span>OR</span></h3>
-      <label for="yearEl">Year:</label>
-      <input type="text" name="yearEl" id="yearEl" />
-      <label for="makeEl">Make:</label>
-      <input type="text" name="makeEl" id="makeEl" />
-      <label for="modelEl">Model:</label>
-      <input type="text" name="modelEl" id="modelEl" />
-    </form>
-  </body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <script src="js/objects.js" defer></script>
+        <link rel="stylesheet" href="styles/objects.css" />
+        <title>Javascript Objects</title>
+    </head>
+    <body>
+        <div class="header">
+            <div class="header__info">
+                <h1 class="header__title">Generate user profiles</h1>
+                <h2 class="header__subtitle">
+                    An effortless way to generate dummy user data
+                </h2>
+            </div>
+        </div>
+        <section id="main">
+            <form class="user-form" action="#">
+                <label for="gender">Select Gender:</label>
+                <input
+                    type="radio"
+                    name="gender"
+                    id="male-input"
+                    value="male"
+                    checked
+                />Male
+                <input
+                    type="radio"
+                    name="gender"
+                    id="female-input"
+                    value="female"
+                />Female
+                <label for="nationality">Select Nationality:</label>
+                <select name="nationality" id="user-form__nationality">
+                    <option value="us">United States</option>
+                    <option value="br">Brazil</option>
+                    <option value="gb">United Kingdom</option>
+                    <option value="fr">France</option>
+                    <option value="es">Spain</option>
+                </select>
+                <button type="submit" id="user-form__submit">Generate</button>
+            </form>
+            <div class="user-container hidden">
+                <img src="" alt="" class="user-container__image" />
+                <div>
+                    <h2 class="user-container__title"></h2>
+                    <p class="user-container__name"></p>
+                    <p class="user-container__age"></p>
+                    <p class="user-container__username"></p>
+                    <p class="user-container__email"></p>
+                    <p class="user-container__address"></p>
+                    <p class="user-container__phoneNumber"></p>
+                </div>
+            </div>
+        </section>
+    </body>
 </html>

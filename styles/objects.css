@@ -1,0 +1,159 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Lato';
+    font-size: 1.5rem;
+    background: linear-gradient(to bottom right, #34495e, #34495ef3);
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    padding-left: 15vw;
+}
+
+.header {
+    height: 23rem;
+    padding-top: 10rem;
+    color: #ecf0f1;
+}
+
+.header__title {
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 4.5rem;
+    letter-spacing: 0.2rem;
+}
+
+.header__subtitle {
+    margin-top: 0.3rem;
+    font-size: 1.7rem;
+    font-weight: 100;
+    letter-spacing: 0.1rem;
+    text-transform: capitalize;
+}
+
+.header__cta {
+    font-size: 1.5rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    background-color: #9b59b6;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 0.08rem;
+}
+
+.user-form {
+    color: #ecf0f1;
+    width: 28vw;
+}
+
+.user-form #female-input {
+    margin-bottom: 2.5rem;
+}
+.user-form label {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem;
+    margin: 0.5rem;
+}
+
+.user-form input[type='radio'] {
+    margin: 0.5rem;
+}
+
+#user-form__submit {
+    padding: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-top: 3rem;
+    background-color: #f1c40f;
+    color: #2c3e50;
+}
+
+select {
+    appearance: none;
+    height: 3rem;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 0px;
+    display: block;
+    margin-top: 1.25rem;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+section#main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.user-container {
+    width: 35vw;
+    min-width: 35vw;
+    padding: 2rem;
+    position: relative;
+    color: #ecf0f1;
+    background-color: #405a74;
+    position: relative;
+    top: -1.5rem;
+    border-radius: 2rem;
+    box-shadow: 0.5rem 0.2rem 2rem 2rem #34495e;
+    display: flex;
+    flex-direction: row;
+}
+
+.user-container__image {
+    border: 0.5rem solid #f1c40f;
+    border-radius: 50%;
+    margin-right: 2rem;
+    width: 50%;
+}
+
+.user-container__name {
+    font-size: 2.5rem;
+}
+
+.user-container p {
+    margin: 0.8rem;
+}
+
+/***** Helper Classes ****/
+.hidden {
+    display: none;
+}
+
+.show {
+    display: flex;
+}
+
+@media (max-width: 878px) {
+    section#main {
+        flex-direction: column;
+    }
+    .user-container {
+        margin-top: 5rem;
+        width: 75vw;
+    }
+    .user-form {
+        margin-top: 4rem;
+    }
+}

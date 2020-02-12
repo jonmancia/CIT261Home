@@ -63,7 +63,10 @@ class Request {
                 renderOnDOM(user)
             })
             .catch(err => {
-                alert('There was an error with your request. ' + err)
+                //alert('There was an error with your request. ' + err)
+                document.querySelector(
+                    '.user-container'
+                ).innerHTML = `Please try again later. ${err}`
             })
     }
 }

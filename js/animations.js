@@ -28,33 +28,21 @@ function moveBall(ballPos, cursorPos) {
     // then get the coordinates of the center of the circle and add 25px for both x and y
     if (calcDistance(getCenter(ballPos), cursorPos).total <= 120) {
         if (calcDistance(getCenter(ballPos), cursorPos).x <= 150) {
-            state.setState('x', 45)
-            ballEl.style.transform = `
-            translate(${state.getState('x')}px,
-            ${0}px)
-            `
-            if (getCenter(ballPos).x >= windowWidth) {
-                state.setState('x', state.getState('x') * -1)
-                ballEl.style.transform = `
-                translate(${state.getState('x')}px,
-                ${state.getState('x')}px)
-                `
-            }
-        }
+            const randomWidth = Randomize(windowWidth)
+            const randomHeight = Randomize(windowHeight)
+            console.log('random: ', randomHeight, randomWidth)
+            console.log('height: ', windowHeight, windowWidth)
 
-        if (calcDistance(getCenter(ballPos), cursorPos).y <= 150) {
-            state.setState('y', 45)
-            ballEl.style.transform = `
-            translate(${0}px,
-            ${state.getState('y')}px)
-            `
-            if (getCenter(ballPos).y >= windowHeight) {
-                state.setState('y', state.getState('y') * -1)
-                ballEl.style.transform = `
-                translate(${0}px,
-                ${state.getState('y')}px)
-                `
-            }
+            ballEl.style.left = randomWidth + 'px'
+            ballEl.style.top = randomHeight + 'px'
+            console.log(getCenter(ballPos))
+            // if (getCenter(ballPos).x >= windowWidth + 'px') {
+            //     ballEl.style.top(randomWidth - windowWidth)
+            //     console.log('p')
+            // } else if (getCenter(ballPos).y >= windowHeight + 'px') {
+            //     ballEl.style.left(randomHeight - windowHeight)
+            //     console.log('h')
+            // }
         }
     }
 }

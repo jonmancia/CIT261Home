@@ -30,13 +30,15 @@ body {
     padding: 10vh;
     color: #fff;
     text-align: center;
+    height: 30vh;
 
     .title {
         text-transform: uppercase;
         font-weight: 200;
         font-size: $title;
         letter-spacing: 0.4rem;
-        text-shadow: 1.5rem 0.1rem 1em $light;
+        text-shadow: 1.5rem 0.8rem 0.5em $light;
+        height: 15rem;
     }
 
     .subtitle {
@@ -54,28 +56,33 @@ body {
         clip-path: polygon(10% 0, 100% 0%, 90% 100%, 0% 100%);
         background-color: red;
         box-shadow: 5rem 5rem black;
-        animation: moveUp 1s 1s 2;
+        animation: moveUp 2s 2s infinite;
         animation-fill-mode: backwards;
-
-        &:hover {
-            animation: moveUp 2s infinite;
-        }
     }
 }
 
 .ball-container {
     position: relative;
+    height: 70vh;
 }
 
 .ball {
     width: 15rem;
     height: 15rem;
-    background-color: $light;
+    background-color: red;
     border: 0.05rem solid red;
     border-radius: 100%;
-    margin: 0 auto;
-    position: relative;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     animation: pulse 3s infinite;
+    z-index: 1;
+    cursor: pointer;
+
+    &:active {
+        background-color: red;
+    }
 }
 
 @keyframes moveUp {

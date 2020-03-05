@@ -26,30 +26,31 @@ body {
       color: #ffa258;
       text-shadow: 0.01rem 0.01rem;
       font-style: italic;
-      transition: all 1s ease;
+      transition: transform 1s ease;
       letter-spacing: 0.5rem;
       font-weight: 400; }
       .container .header .title:hover {
         transform: scale(1.2); }
-  .container .video-container {
-    margin: 0 auto;
-    margin-top: 2.5rem;
-    transition: all 1s ease;
-    width: fit-content; }
-    @media screen and (max-width: 465px) {
-      .container .video-container {
-        min-width: 100%; } }
-  .container .video-credits {
+
+.video-container {
+  margin: 0 auto;
+  transition: all 1s ease;
+  position: relative;
+  width: 70rem; }
+  @media screen and (max-width: 465px) {
+    .video-container {
+      width: 100vw; } }
+  .video-container video {
+    width: 70rem;
+    margin-top: 1.75rem;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); }
+  .video-container .video-credits {
     color: #e0fcff;
     margin-top: 1rem;
     text-align: right; }
-  .container a {
-    font-size: 1.3rem;
-    color: #e0fcff;
-    text-decoration: none;
-    font-weight: bold; }
-    .container a:visited {
-      color: #e0fcff; }
 
 .interested-container .interested-title {
   font-size: 2rem;
@@ -71,3 +72,25 @@ body {
     font-size: 1.2rem; }
   .interested-container .podcast-card:hover {
     transform: scale(1.3); }
+
+a {
+  font-size: 1.3rem;
+  color: #e0fcff;
+  text-decoration: none;
+  letter-spacing: 0.15rem;
+  font-weight: 200; }
+  a:visited {
+    color: #e0fcff; }
+
+span.react-logo {
+  transform: scale(0.5);
+  display: inline-block;
+  position: relative;
+  top: 50px; }
+
+#canvas {
+  animation: rotatze 4s linear infinite; }
+
+@keyframes rotatze {
+  100% {
+    transform: rotate(360deg); } }

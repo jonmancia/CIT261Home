@@ -41,6 +41,11 @@ body {
     margin: 0 auto;
     transition: all 1s ease;
     width: 70rem;
+    height: auto;
+    @media (max-width: 665px) {
+        width: 100%;
+        height: auto;
+    }
     video {
         width: 70rem;
         margin-top: 1.75rem;
@@ -49,8 +54,8 @@ body {
         left: 50%;
         transform: translateX(-50%);
         border: 3px solid #e0fcff;
-        @media (max-width: 465px) {
-            min-width: 100%;
+        @media (max-width: 665px) {
+            width: 100%;
             height: auto;
         }
     }

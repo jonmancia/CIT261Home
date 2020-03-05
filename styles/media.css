@@ -33,7 +33,12 @@ body {
 .video-container {
   margin: 0 auto;
   transition: all 1s ease;
-  width: 70rem; }
+  width: 70rem;
+  height: auto; }
+  @media (max-width: 665px) {
+    .video-container {
+      width: 100%;
+      height: auto; } }
   .video-container video {
     width: 70rem;
     margin-top: 1.75rem;
@@ -42,9 +47,9 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border: 3px solid #e0fcff; }
-    @media (max-width: 465px) {
+    @media (max-width: 665px) {
       .video-container video {
-        min-width: 100%;
+        width: 100%;
         height: auto; } }
   .video-container .video-credits {
     color: #e0fcff;

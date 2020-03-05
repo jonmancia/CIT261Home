@@ -14,6 +14,9 @@ body {
         sans-serif;
     padding: 3rem;
     background: #404969;
+    @media (max-width: 465px) {
+        overflow-x: hidden;
+    }
 }
 
 .container {
@@ -45,9 +48,7 @@ body {
     transition: all 1s ease;
     position: relative;
     width: 70rem;
-    @media screen and (max-width: 465px) {
-        width: 100vw;
-    }
+
     video {
         width: 70rem;
         margin-top: 1.75rem;
@@ -55,6 +56,10 @@ body {
         top: 0;
         left: 50%;
         transform: translateX(-50%);
+        @media (max-width: 465px) {
+            overflow: hidden;
+            min-width: 100%;
+        }
     }
     .video-credits {
         color: #e0fcff;

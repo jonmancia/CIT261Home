@@ -1,0 +1,65 @@
+/*********/
+/*********/
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-family: monospace;
+  background: radial-gradient(#7984ee, #6730ec);
+  height: 95vh;
+  background-size: cover;
+  color: #d2f6fc; }
+
+.header {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 1.5rem; }
+  .header .title {
+    font-size: 5rem;
+    font-weight: 400; }
+  .header .subTitle {
+    font-size: 2.25rem;
+    padding-top: 0.5rem;
+    font-style: italic;
+    font-weight: 200; }
+  .header .notification {
+    height: 25vh;
+    width: 100%;
+    background-color: maroon;
+    position: absolute;
+    display: none; }
+    .header .notification p {
+      position: relative;
+      top: 60px;
+      font-size: 2.5rem; }
+  .header .display {
+    display: block; }
+
+.circle-container {
+  width: 15rem;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column; }
+  .circle-container .circle {
+    width: 15rem;
+    height: 15rem;
+    border-radius: 15rem;
+    background-color: #ffb6b9; }
+    .circle-container .circle:nth-of-type(2) {
+      margin-top: 5rem; }
+    .circle-container .circle:nth-of-type(3) {
+      margin-top: 5rem; }
+  .circle-container .active-red {
+    background-color: red; }
+  .circle-container .active-yellow {
+    background-color: yellow; }
+  .circle-container .active-green {
+    background-color: green; }

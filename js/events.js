@@ -35,7 +35,6 @@ for (let circle of circles) {
             event.preventDefault()
         }
         event.stopPropagation()
-        event.cancelBubble()
     })
 
     // Touch End event listener
@@ -46,7 +45,6 @@ for (let circle of circles) {
             event.preventDefault()
         }
         event.stopPropagation()
-        event.cancelBubble()
     })
 
     if (!detectMob()) {

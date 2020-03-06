@@ -8,6 +8,7 @@ const color = () => {
     return colors[randomNum]
 }
 
+// Detects if the browser used by the user is mobile
 function detectMob() {
     const toMatch = [
         /Android/i,
@@ -48,7 +49,7 @@ for (let circle of circles) {
         event.cancelBubble()
     })
 
-    if (detectMob()) {
+    if (!detectMob()) {
         circle.addEventListener('click', function() {
             let notification = document.querySelector('.notification')
             notification.classList.add('display')

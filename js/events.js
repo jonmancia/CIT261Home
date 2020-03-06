@@ -17,6 +17,7 @@ for (let circle of circles) {
         if (event.cancelable) {
             event.preventDefault()
         }
+        event.stopPropagation()
     })
 
     // Touch End event listener
@@ -26,6 +27,7 @@ for (let circle of circles) {
         if (event.cancelable) {
             event.preventDefault()
         }
+        event.stopPropagation()
     })
 
     circle.addEventListener('click', function() {

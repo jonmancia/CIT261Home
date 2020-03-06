@@ -8,6 +8,22 @@ const color = () => {
     return colors[randomNum]
 }
 
+function detectMob() {
+    const toMatch = [
+        /Android/i,
+        /webOS/i,
+        /iPhone/i,
+        /iPad/i,
+        /iPod/i,
+        /BlackBerry/i,
+        /Windows Phone/i,
+    ]
+
+    return toMatch.some(toMatchItem => {
+        return navigator.userAgent.match(toMatchItem)
+    })
+}
+
 for (let circle of circles) {
     // Touch Start event listener
     circle.addEventListener('touchstart', function(event) {
@@ -32,11 +48,13 @@ for (let circle of circles) {
         event.cancelBubble()
     })
 
-    circle.addEventListener('click', function() {
-        let notification = document.querySelector('.notification')
-        notification.classList.add('display')
-        setTimeout(function() {
-            notification.classList.remove('display')
-        }, 2000)
-    })
+    if (detectMob()) {
+        circle.addEventListener('click', function() {
+            let notification = document.querySelector('.notification')
+            notification.classList.add('display')
+            setTimeout(function() {
+                notification.classList.remove('display')
+            }, 2000)
+        })
+    }
 }

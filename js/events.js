@@ -14,14 +14,18 @@ for (let circle of circles) {
         const col = `active-${color()}`
         event.target.classList.toggle(col)
         // Needed as both touch and mouse events will be fired
-        event.preventDefault()
+        if (event.cancelable) {
+            event.preventDefault()
+        }
     })
 
     // Touch End event listener
     circle.addEventListener('touchend', function(event) {
         event.target.classList.remove(event.target.classList[2])
         // Cancels the click listener
-        event.preventDefault()
+        if (event.cancelable) {
+            event.preventDefault()
+        }
     })
 
     circle.addEventListener('click', function() {

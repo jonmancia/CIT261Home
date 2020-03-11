@@ -19,16 +19,18 @@ body {
   width: 75%;
   border-radius: 3rem;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  transform: translateY(0); }
   .container .title {
     font-size: 5.5rem;
     color: #ffa258;
     text-shadow: 0.01rem 0.01rem;
     font-style: italic;
-    transition: transform 1s ease-in 1s;
+    transition: transform 1s ease-in;
     letter-spacing: 0.5rem;
-    transform: translateY(-25%);
     font-weight: 400; }
+    .container .title:hover {
+      transform: translateY(-25%); }
 
 .video-container {
   margin: 0 auto;
@@ -43,14 +45,15 @@ body {
     width: 70rem;
     margin-top: 1.75rem;
     margin: 0 auto;
-    transform: rotate(360deg);
     border: 3px solid #e0fcff;
-    transition: all 1s ease-in-out;
+    transition: transform 1s ease-in-out;
     transform-origin: center; }
     @media (max-width: 665px) {
       .video-container video {
         width: 100%;
         height: auto; } }
+    .video-container video:focus {
+      transform: rotate(360deg); }
   .video-container .video-credits {
     color: #e0fcff;
     margin-top: 1rem;

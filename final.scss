@@ -3,7 +3,7 @@
 $red: #e53535;
 $green: #3b9f24;
 $yellow: #e5d135;
-
+$bg: #334252;
 .red {
     color: $red;
 }
@@ -29,15 +29,24 @@ html {
 body {
     font-size: 100%;
     font-family: 'Baloo Chettan 2';
-    background-color: #435045;
+    background-color: $bg;
 }
 
-.title {
-    font-size: 6.5rem;
-    width: 100%;
-    text-align: center;
-    color: $red;
-    margin-top: 10rem;
+.header {
+    display: flex;
+    justify-content: center;
+
+    .title {
+        font-size: 6.5rem;
+        color: $red;
+        text-align: center;
+    }
+
+    .germ-icon {
+        font-size: 6.5rem;
+        padding-top: 5rem;
+        margin: 0 3rem;
+    }
 }
 
 #location-text {
@@ -46,7 +55,7 @@ body {
     text-align: center;
     margin-top: 1rem;
     font-size: 4.5rem;
-    color: $yellow;
+    color: #3dc7be;
 }
 
 .sub-content {
@@ -81,12 +90,23 @@ body {
             font-size: 3.5rem;
         }
         h3 {
-            width: 30rem;
+            width: 20rem;
             height: 10rem;
             text-align: center;
             padding-top: 1.2rem;
             font-size: 5rem;
+        }
+
+        #recovered {
             border: 1px solid $green;
+        }
+
+        #deaths {
+            border: 1px solid $red;
+        }
+
+        #confirmed {
+            border: 1px solid $yellow;
         }
     }
 }

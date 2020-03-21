@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css?family=Baloo+Chettan+2&display=swap");
+.red {
+  color: #e53535; }
+
+.green {
+  color: #3b9f24; }
+
+.yellow {
+  color: #e5d135; }
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  font-size: 100%;
+  font-family: 'Baloo Chettan 2';
+  background-color: #435045; }
+
+.title {
+  font-size: 6.5rem;
+  width: 100%;
+  text-align: center;
+  color: #e53535;
+  margin-top: 10rem; }
+
+#location-text {
+  width: 25%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 4.5rem;
+  color: #e5d135; }
+
+.sub-content {
+  width: 100%;
+  margin: 2.5rem 0;
+  text-align: center; }
+  .sub-content #states-label {
+    font-size: 3.5rem; }
+  .sub-content #location {
+    font-size: 2rem;
+    margin-left: 1.5rem; }
+
+.data-container {
+  margin: 0 auto;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .data-container .container {
+    margin: 0 auto;
+    position: relative;
+    color: whitesmoke; }
+    .data-container .container .data-title {
+      text-align: center;
+      font-size: 3.5rem; }
+    .data-container .container h3 {
+      width: 30rem;
+      height: 10rem;
+      text-align: center;
+      padding-top: 1.2rem;
+      font-size: 5rem;
+      border: 1px solid #3b9f24; }

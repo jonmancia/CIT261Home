@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="styles/final.css" />
+        <script src="js/final.js" defer></script>
+        <title>Coronavirus Dashboard</title>
+    </head>
+    <body>
+        <h1 class="title">
+            <span class="germ-icon">🦠</span>Coronavirus Pandemic
+            <span class="germ-icon">🦠</span>
+        </h1>
+        <h2 id="location-text">Global</h2>
+        <div class="data-container">
+            <div class="container">
+                <p class="data-title yellow">Confirmed</p>
+                <h3 id="confirmed" class="">Loading...</h3>
+            </div>
+            <div class="container">
+                <p class="data-title red">Deaths</p>
+                <h3 id="deaths" class="">Loading...</h3>
+            </div>
+            <div class="container">
+                <p class="data-title green">Recovered</p>
+                <h3 id="recovered" class="">Loading...</h3>
+            </div>
+        </div>
+        <div class="sub-content">
+            <label id="states-label" for="states">Select State:</label>
+            <select name="states" id="location">
+                <option value="Arizona">Arizona</option>
+                <option value="Alaska">Alaska</option>
+                <option value="California">California</option>
+            </select>
+        </div>
+    </body>
+</html>

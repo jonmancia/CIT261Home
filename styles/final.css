@@ -23,7 +23,9 @@ body {
 
 .header {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  margin-top: 2rem;
+  width: 100%; }
   .header .title {
     font-size: 6.5rem;
     color: #e53535;

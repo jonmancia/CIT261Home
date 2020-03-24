@@ -32,7 +32,15 @@ body {
   .header .germ-icon {
     font-size: 6.5rem;
     padding-top: 5rem;
-    margin: 0 3rem; }
+    margin: 0 3rem;
+    width: fit-content;
+    display: inline-block;
+    transform-origin: 50% 66%;
+    animation: rotate360 4s linear infinite; }
+
+@keyframes rotate360 {
+  100% {
+    transform: rotate(360deg); } }
   .header .location-text-container {
     width: 100vw;
     text-align: center; }

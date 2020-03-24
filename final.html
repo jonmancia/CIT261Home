@@ -10,7 +10,10 @@
     <body>
         <div class="header">
             <h1 class="title">Coronavirus 🦠</h1>
-            <h2 id="location-text">Global</h2>
+            <div class="location-text-container">
+                <h2 class="state-text"></h2>
+                <h2 class="country-text">Global</h2>
+            </div>
         </div>
 
         <div class="data-container">
@@ -28,8 +31,12 @@
             </div>
         </div>
         <div class="sub-content">
-            <label id="states-label" for="states">Select Country:</label>
-            <select name="states" id="location">
+            <label id="countries-label" for="countries">Select Country:</label>
+            <select name="countries" id="country-location">
+                <option value="-1">---</option>
+            </select>
+            <label for="states" id="states-label">Select State/Province:</label>
+            <select name="states" id="state-location">
                 <option value="-1">---</option>
             </select>
         </div>

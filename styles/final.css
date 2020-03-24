@@ -33,23 +33,37 @@ body {
     font-size: 6.5rem;
     padding-top: 5rem;
     margin: 0 3rem; }
-
-#location-text {
-  width: 25%;
-  margin: 0 auto;
-  text-align: center;
-  margin-top: 1rem;
-  font-size: 4.5rem;
-  color: #6fb98f; }
+  .header .location-text-container {
+    width: 100vw;
+    text-align: center; }
+  .header .state-text {
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 4.5rem;
+    color: #6fb98f;
+    display: inline-block; }
+  .header .country-text {
+    width: fit-content;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 4.5rem;
+    color: #6fb98f;
+    display: inline-block; }
 
 .sub-content {
   width: 100%;
   margin: 2.5rem 0;
   text-align: center; }
+  .sub-content #countries-label,
   .sub-content #states-label {
+    display: block;
     font-size: 3.5rem;
     color: whitesmoke; }
-  .sub-content #location {
+  .sub-content #country-location,
+  .sub-content #state-location {
     font-size: 2rem;
     margin-left: 1.5rem; }
 

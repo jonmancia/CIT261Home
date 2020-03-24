@@ -5,6 +5,7 @@ class Location {
         this.country = country
         this.country_code = country_code
         this.state = state
+        this.id = null
     }
 }
 
@@ -23,8 +24,10 @@ class DOMElements {
         this.confirmedEl = document.querySelector('#confirmed')
         this.deathsEl = document.querySelector('#deaths')
         this.recoveredEl = document.querySelector('#recovered')
-        this.locationEl = document.querySelector('#location')
-        this.locationTextEl = document.querySelector('#location-text')
+        this.countryLocationEl = document.querySelector('#country-location')
+        this.stateLocationEl = document.querySelector('#state-location')
+        this.stateTextEl = document.querySelector('.state-text')
+        this.countryTextEl = document.querySelector('.country-text')
     }
 }
 
@@ -35,9 +38,22 @@ class Request {
     }
 
     getData() {
+        const elements = new DOMElements()
+        elements.confirmedEl.textContent = 'Loading...'
+        elements.deathsEl.textContent = 'Loading...'
+        elements.recoveredEl.textContent = 'Loading...'
+
         if (this.location == null || this.location.country == -1) {
             return fetch(
                 `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/latest`
+            )
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => data)
+        } else if (this.location.id) {
+            return fetch(
+                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
             )
                 .then(response => {
                     return response.json()
@@ -93,30 +109,67 @@ document.querySelector('body').onload = function() {
 
     // get Country, country id, and country_code
     req.getCountryData().then(data => {
-        console.log(data)
-        bindToDropdown(data, elements.locationEl)
+        bindCountriesToDropdown(data, elements.countryLocationEl)
     })
 }
 
-document.querySelector('#location').addEventListener('change', function(e) {
-    // get elements
-    const elements = new DOMElements()
+document
+    .querySelector('#country-location')
+    .addEventListener('change', function(e) {
+        // get elements
+        const elements = new DOMElements()
 
-    // change location-text
-    elements.locationTextEl.textContent =
-        e.target.options[e.target.options.selectedIndex].textContent
+        // remove prevous state location text
+        // change location-text
+        elements.stateTextEl.textContent = ''
+        // change location-text
+        elements.countryTextEl.textContent =
+            e.target.options[e.target.options.selectedIndex].textContent
 
-    // Create a location
-    const location = new Location(
-        e.target.options[e.target.options.selectedIndex].textContent,
-        e.target.options[e.target.options.selectedIndex].value
-    )
-    // pass location
-    const req = new Request(location)
-    // make request with location
-    req.getData().then(data => renderOnDom(data, elements))
-})
+        // Create a location
+        const location = new Location(
+            e.target.options[e.target.options.selectedIndex].textContent,
+            e.target.options[e.target.options.selectedIndex].value
+        )
 
+        // pass location
+        const req = new Request(location)
+        // make request with location
+        req.getCountryData().then(data => {
+            bindStatesToDropdown(
+                data[location.country],
+                elements.stateLocationEl
+            )
+        })
+        req.getData().then(data => renderOnDom(data, elements))
+    })
+
+// State dropdown listener
+document
+    .querySelector('#state-location')
+    .addEventListener('change', function(e) {
+        // get elements
+        const elements = new DOMElements()
+
+        // get state id
+        const id = e.target.options[e.target.options.selectedIndex].value
+
+        // set location
+        const location = new Location()
+        location.id = id
+
+        // get request object
+        const req = new Request(location)
+
+        // change location-text
+        elements.stateTextEl.textContent =
+            e.target.options[e.target.options.selectedIndex].textContent + ', '
+
+        // get data and render
+        req.getData().then(({ location }) => {
+            renderOnDom(location, elements)
+        })
+    })
 /* Listeners End */
 
 /* Helper functions */
@@ -134,7 +187,7 @@ function sortDataByKey(data) {
     return orderedData
 }
 // Bind countries to dropdown
-function bindToDropdown(data, element) {
+function bindCountriesToDropdown(data, element) {
     const sortedData = sortDataByKey(data)
     for (let country in sortedData) {
         const el = document.createElement('option')
@@ -142,5 +195,35 @@ function bindToDropdown(data, element) {
         const text = document.createTextNode(country)
         el.appendChild(text)
         element.appendChild(el)
+    }
+}
+
+// Bind states/provinces to dropdown
+function bindStatesToDropdown(data, element) {
+    // unbind previous states/provinces
+    const elements = new DOMElements()
+    for (let i = elements.stateLocationEl.options.length - 1; i >= 0; i--) {
+        if (elements.stateLocationEl.options[i].value != '-1')
+            elements.stateLocationEl.remove(i)
+    }
+
+    // alphabetize list
+    const sortedData = data.sort((a, b) =>
+        a['province'] > b['province'] ? 1 : -1
+    )
+
+    // add states/provinces to dropdown
+    for (let state in sortedData) {
+        if (
+            // this regex necessary as not only states but cities are returned from api call
+            !sortedData[state]['province'].match(/,/) &&
+            sortedData[state]['province'].length != 0
+        ) {
+            const el = document.createElement('option')
+            el.setAttribute('value', sortedData[state]['id'])
+            const text = document.createTextNode(sortedData[state]['province'])
+            el.appendChild(text)
+            element.appendChild(el)
+        }
     }
 }

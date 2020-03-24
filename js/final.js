@@ -180,6 +180,7 @@ document
                 bindStatesToDropdown(obj, elements.stateLocationEl)
             })
             // render data on DOM
+            req.getData().then(data => renderOnDom(data, elements))
         } else {
             req.getCountryData().then(data => {
                 bindStatesToDropdown(

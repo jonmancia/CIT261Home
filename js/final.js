@@ -51,7 +51,6 @@ class Request {
                     return response.json()
                 })
                 .then(data => data)
-                .catch(err => alert(err))
         } else if (this.location.id) {
             return fetch(
                 `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
@@ -60,15 +59,12 @@ class Request {
                     return response.json()
                 })
                 .then(data => data)
-                .catch(err => alert(err))
         } else if (this.location.country) {
             return fetch(
                 `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=${this.location.country_code}`
-            )
-                .then(data => {
-                    return data.json()
-                })
-                .catch(err => alert(err))
+            ).then(data => {
+                return data.json()
+            })
         }
     }
 

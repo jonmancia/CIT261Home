@@ -45,7 +45,7 @@ class Request {
 
         if (this.location == null || this.location.country == -1) {
             return fetch(
-                `https://coronavirus-tracker-api.herokuapp.com/v2/latest`
+                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/latest`
             )
                 .then(response => {
                     return response.json()
@@ -54,7 +54,7 @@ class Request {
                 .catch(err => alert(err))
         } else if (this.location.id) {
             return fetch(
-                `https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
+                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
             )
                 .then(response => {
                     return response.json()
@@ -63,7 +63,7 @@ class Request {
                 .catch(err => alert(err))
         } else if (this.location.country) {
             return fetch(
-                `https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=${this.location.country_code}`
+                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=${this.location.country_code}`
             )
                 .then(data => {
                     return data.json()
@@ -75,7 +75,7 @@ class Request {
     getCountryData() {
         if (this.location && this.location.country == 'US') {
             return fetch(
-                'https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=csbs'
+                'https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations?source=csbs'
             )
                 .then(res => res.json())
                 .then(data => {
@@ -100,7 +100,7 @@ class Request {
                 .catch(err => alert(err))
         } else {
             return fetch(
-                'https://coronavirus-tracker-api.herokuapp.com/v2/locations'
+                'https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations'
             )
                 .then(res => res.json())
                 .then(data => {

@@ -62,9 +62,11 @@ class Request {
         } else if (this.location.country) {
             return fetch(
                 `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations?country_code=${this.location.country_code}`
-            ).then(data => {
-                return data.json()
-            })
+            )
+                .then(data => {
+                    return data.json()
+                })
+                .then(data => data)
         }
     }
 

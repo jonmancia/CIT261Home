@@ -78,19 +78,20 @@ class Request {
                 .then(res => res.json())
                 .then(data => {
                     const stateMap = {}
+                    console.log(data['locations'])
                     data['locations'].reduce((acc, current) => {
-                        if (!stateMap[current['state']]) {
-                            return (stateMap[current['state']] = {
+                        if (!stateMap[current['province']]) {
+                            return (stateMap[current['province']] = {
                                 confirmed: current['latest']['confirmed'],
                                 deaths: current['latest']['deaths'],
                                 recovered: current['latest']['recovered'],
                             })
                         }
-                        stateMap[current['state']]['confirmed'] +=
+                        stateMap[current['province']]['confirmed'] +=
                             current['latest']['confirmed']
-                        stateMap[current['state']]['deaths'] +=
+                        stateMap[current['province']]['deaths'] +=
                             current['latest']['deaths']
-                        stateMap[current['state']]['recovered'] +=
+                        stateMap[current['province']]['recovered'] +=
                             current['latest']['recovered']
                     }, stateMap)
                     return stateMap

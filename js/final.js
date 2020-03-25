@@ -45,7 +45,7 @@ class Request {
 
         if (this.location == null || this.location.country == -1) {
             return fetch(
-                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/latest`
+                `https://coronavirus-tracker-api.herokuapp.com/v2/latest`
             )
                 .then(response => {
                     return response.json()
@@ -54,7 +54,7 @@ class Request {
                 .catch(err => alert(err))
         } else if (this.location.id) {
             return fetch(
-                `https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
+                `https://coronavirus-tracker-api.herokuapp.com/v2/locations/${this.location.id}`
             )
                 .then(response => {
                     return response.json()
@@ -173,6 +173,11 @@ document
         const req = new Request(location)
         // make request with location
 
+        if (countryName == '---') {
+            req.getData().then(data => renderOnDom(data, elements))
+            return
+        }
+
         if (countryName == 'US') {
             req.getCountryData().then(data => {
                 const obj = {}
@@ -200,7 +205,7 @@ document
         const elements = new DOMElements()
 
         // get state id
-        const id = e.target.options[e.target.options.selectedIndex].value
+        let id = e.target.options[e.target.options.selectedIndex].value
 
         // set location
         const location = new Location()
@@ -208,6 +213,10 @@ document
 
         // get request object
         const req = new Request(location)
+
+        if (id < 0) {
+            return
+        }
 
         // change location-text
         elements.stateTextEl.textContent =

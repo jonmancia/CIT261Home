@@ -96,7 +96,11 @@ class Request {
                     }, stateMap)
                     return stateMap
                 })
-                .catch(err => alert(err))
+                .catch(err =>
+                    alert(
+                        'I apologize for the inconvenience, the server is down'
+                    )
+                )
         } else {
             return fetch(
                 'https://cors-anywhere.herokuapp.com/https://coronavirus-tracker-api.herokuapp.com/v2/locations'
@@ -123,7 +127,11 @@ class Request {
                     }
                     return locationMap
                 })
-                .catch(err => alert(err))
+                .catch(err =>
+                    alert(
+                        'I apologize for the inconvenience, the server is down'
+                    )
+                )
         }
     }
 }
@@ -133,6 +141,7 @@ class Request {
 
 // Window onload and get DOM elements
 document.querySelector('body').onload = function() {
+    getUserData().then(data => console.log(data))
     // get elements
     const elements = new DOMElements()
 
@@ -307,4 +316,17 @@ function bindStatesToDropdown(data, element) {
             }
         }
     }
+}
+
+async function getUserData() {
+    let userData
+    try {
+        userData = await fetch('https://randomuser.me/api/?nat=gb').then(data =>
+            data.json()
+        )
+    } catch (err) {
+        console.log(err)
+    }
+
+    return userData
 }

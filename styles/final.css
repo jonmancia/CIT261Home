@@ -32,7 +32,8 @@ body {
     font-weight: 300;
     font-size: 6.5rem;
     color: whitesmoke;
-    text-align: center; }
+    text-align: center;
+    transform: skewX(-10deg); }
   .header .germ-icon {
     font-size: 6.5rem;
     padding-top: 5rem;
@@ -89,6 +90,7 @@ body {
   .data-container .container {
     margin: 0 auto;
     position: relative;
+    transition: font-size 2s;
     color: whitesmoke; }
     .data-container .container .data-title {
       text-align: center;
@@ -98,7 +100,10 @@ body {
       height: 10rem;
       text-align: center;
       padding-top: 1.2rem;
-      font-size: 5rem; }
+      font-size: 5rem;
+      transition: font-size 1.5 s; }
+      .data-container .container h3:hover {
+        font-size: 5.5rem; }
     .data-container .container #recovered {
       border: 1px solid #6fb98f; }
     .data-container .container #deaths {

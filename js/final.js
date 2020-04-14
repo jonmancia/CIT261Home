@@ -1,3 +1,52 @@
+// local storage state example
+const state = (function() {
+    // private methods
+    const getStore = function() {
+        return localStorage
+    }
+    return {
+        getFavs: function() {
+            return getStore().getItem('selectedCountries')
+        },
+        setFav: function(country) {
+            // make sure selectedCountries is not null
+            if (getStore().getItem('selectedCountries')) {
+                // parse object from localStorage
+                const countriesObj = JSON.parse(
+                    getStore().getItem('selectedCountries')
+                )
+                // if the country is already found
+                if (countriesObj[country]) {
+                    const countryValue = countriesObj[country]
+                    countriesObj[country] = countryValue + 1
+                    getStore().setItem(
+                        'selectedCountries',
+                        JSON.stringify(countriesObj)
+                    )
+                } else {
+                    countriesObj[country] = 1
+                    getStore().setItem(
+                        'selectedCountries',
+                        JSON.stringify(countriesObj)
+                    )
+                }
+            } else {
+                const newFav = { [country]: 1 }
+                getStore().setItem('selectedCountries', JSON.stringify(newFav))
+            }
+        },
+        getTopFavs: function() {
+            const favsObj = JSON.parse(this.getFavs())
+            const favsArr = []
+            for (let fav in favsObj) {
+                let t = [fav, favsObj[fav]]
+                favsArr.push(t)
+            }
+            return favsArr.sort((a, b) => b[1] - a[1]).slice(0, 4)
+        },
+    }
+})()
+
 /* Object definitions Start */
 // Location class definition
 class Location {
@@ -78,7 +127,6 @@ class Request {
                 .then(res => res.json())
                 .then(data => {
                     const stateMap = {}
-                    console.log(data['locations'])
                     data['locations'].reduce((acc, current) => {
                         if (!stateMap[current['province']]) {
                             return (stateMap[current['province']] = {
@@ -141,7 +189,6 @@ class Request {
 
 // Window onload and get DOM elements
 document.querySelector('body').onload = function() {
-    getUserData().then(data => console.log(data))
     // get elements
     const elements = new DOMElements()
 
@@ -149,7 +196,9 @@ document.querySelector('body').onload = function() {
     const req = new Request()
 
     // renderOnDom
-    req.getData().then(data => renderOnDom(data, elements))
+    req.getData().then(data => {
+        renderOnDom(data, elements)
+    })
 
     // get Country, country id, and country_code
     req.getCountryData().then(data => {
@@ -185,6 +234,9 @@ document
             req.getData().then(data => renderOnDom(data, elements))
             return
         }
+
+        // Save country to localstorage and count
+        state.setFav(countryName)
 
         if (countryName == 'US') {
             req.getCountryData().then(data => {

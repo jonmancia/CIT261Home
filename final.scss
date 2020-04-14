@@ -46,6 +46,7 @@ body {
         font-size: 6.5rem;
         color: whitesmoke;
         text-align: center;
+        transform: skewX(-10deg);
     }
 
     .germ-icon {
@@ -121,18 +122,25 @@ body {
     .container {
         margin: 0 auto;
         position: relative;
+        transition: font-size 2s;
 
         color: whitesmoke;
+
         .data-title {
             text-align: center;
             font-size: 3.5rem;
         }
+
         h3 {
             width: 20rem;
             height: 10rem;
             text-align: center;
             padding-top: 1.2rem;
             font-size: 5rem;
+            transition: font-size 1.5 s;
+            &:hover {
+                font-size: 5.5rem;
+            }
         }
 
         #recovered {
